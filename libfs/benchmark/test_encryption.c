@@ -143,6 +143,7 @@ void* do_encryption_write(void* arg) {
 #ifdef _OFFLOAD
 	for (i = 0; i < ITERS; i++) {
 		/* Issue a encryption-and-write directly, offload to storage */
+		/*调用devfspreadencryptpwrite进行读取加密写入*/
 		if (devfspreadencryptpwrite(fd[thread_id], buf, BLOCKSIZE, i*BLOCKSIZE) != BLOCKSIZE) {
 			printf("File data block checksum write fail \n");
 			return NULL;
